@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget https://img.freepik.com/psd-gratuit/effet-texte-psd-hacker-3d_165789-733.jpg -O $HOME/img.jpg
+wget https://img.freepik.com/psd-gratuit/ordinateur-portable-pirate-par-pirate-informatique_587448-4948.jpg -O $HOME/img.jpg
 
 gsettings set org.mate.background picture-filename $HOME/img.jpg
 
