@@ -3,14 +3,11 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[ -z "$PS1" ] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -23,27 +20,23 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -57,7 +50,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\e[4;31m\u@\h \e[0;35m\w $ \e[1;37m'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -84,17 +77,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias IP='ip --brief -c a'
+alias APT='apt-get update -y && apt-get upgrade -y'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -108,10 +96,34 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+#    . /etc/bash_completion
+#fi
+function show_menu {
+	while  true;
+	do
+		echo -e "\e[32m=================================================================================================\e[0m"
+		echo -e "\e[32m======================================Bienvenue dans le terminal=================================\e[0m"
+		echo -e "\e[32m================================================================================================="
+		echo -e "\e[32m======================================Choisissez une option======================================\e[0m"
+		echo -e "\e[32m================================================================================================="
+		echo -e "\e[34m SHOW_IP\e[0m : Affiche les adresses IP actuelles          \e[31mSHOW_APT\e[0m Effectue une mise à jour " 
+#		echo -e "\e[31m SHOW_APT\e[0m: Effectue une mise à jour"
+		echo -e "\e[33m QUITTER\e[0m: QUITTER MENU                               \e[35m HELP\e[0m: Affiche le menu  "
+#		echo -e "\e[35m HELP\e[0m: Affiche ce menu"
+		read -p "Votre choix  " choice 
+		case $choice in 
+			SHOW_IP) echo "Voici un résumé de la configuration réseaux"
+				IP ;;
+			SHOW_APT) echo "Les mises à jours vont s'effectuer" 
+				APT ;;
+			QUITTER)  echo "Menu quitté"
+				break ;;
+			HELP) HELP ;;
+			*) echo "Choix invalide";;
+		esac
+	done
+}
+
+show_menu
+alias HELP=show_menu
