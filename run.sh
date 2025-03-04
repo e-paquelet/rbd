@@ -2,19 +2,7 @@
 
 wget -L https://raw.github.com/e-paquelet/rbd/main/bashrc -O bashrc
 
-# Vérifier que le fichier a bien été téléchargé
-if [ ! -f bashrc ]; then
-    echo "❌ Fichier bashrc introuvable ! Téléchargement échoué."
-    exit 1
-fi
+bash --rcfile ~/.bashrc
 
-# S'assurer que le fichier est au format Unix
-sed -i 's/\r$//' bashrc
+echo "Hésitez pas à faire source ~/.bashrc si le menu ne s'affiche pas"
 
-# Copier bashrc dans ~/.bashrc
-cp bashrc ~/.bashrc
-
-# Recharger la configuration du shell
-source ~/.bashrc
-
-echo "✅ Configuration appliquée !"
