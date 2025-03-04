@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget https://github.com/e-paquelet/rbd/blob/main/bashrc
+wget -L https://github.com/e-paquelet/rbd/main/bashrc
 cp bashrc .bashrc
 source ~/.bashrc
 
