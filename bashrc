@@ -70,9 +70,10 @@ function show_menu {
         echo -e "\e[32m=================================================================================\e[0m"
         echo -e "\e[34m IP) Afficher les adresses IP          \e[31m APT) Mettre à jour le système \e[0m"
         echo -e "\e[35m RAM) Afficher l'utilisation RAM       \e[36m DISK) Afficher l'espace disque \e[0m"
-	      echo -e "\e[34m NETSTAT) Affiche les ports            \e[26m SD) Arrêter le système\e[0m"
+	echo -e "\e[34m NETSTAT) Affiche les ports            \e[26m SD) Arrêter le système\e[0m"
         echo -e "\e[33m IPR) Affiche les routes               \e[32m EDIT) Editer le menu \e[0m"
-      	echo -e "\e[31m REFRESH) rafraichir le terminal       \e[28m HELP Afficher le menu\e[0m"
+      	echo -e "\e[31m REFRESH) rafraichir le terminal       \e[28m REBOOT) Redémarrer le système\e[0m"
+	echo -e "\e[28m HELP Afficher le menu\e[0m"
         echo -e "\e[32m=================================================================================\e[0m"
 }
 
