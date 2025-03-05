@@ -30,17 +30,17 @@ if [ $APP =  "Zimbra" ];
 						tar zxvf zcs-10.1.4_GA_4200000.UBUNTU22_64.20241224171952.tgz ;
 						cd  zcs-10.1.4_GA_4200000.UBUNTU22_64.20241224171952 ;
 						./install.sh  ;
-						su - zimbra -c "zmprov ms $FQDN zimbraMailSSLPort 443 | zmprov ms FQDN zimbraMailSSLProxyPort 8443"
+						su - zimbra -c "zmprov ms $FQDN zimbraMailSSLPort 443 | zmprov ms $FQDN zimbraMailSSLProxyPort 8443"
 						su - zimbra -c "zmcontrol restart"
 						echo "Vous pouvez désormais accéder au webmail sur l'adresse suivante : $FQDN et mail.$DN" ; 
 						mkdir /log/zimbra ;
 						chown -R zimbra:zimbra /log/zimbra  ;
-						chmod -r 770 /log/zimbra ; 
+						chmod 770 /log/zimbra ; 
 						wget https://raw.github.com/e-paquelet/rbd/main/zupdate.sh 
 						mkdir script ;
 						mv zupdate.sh /root/script ;
 						chmod +x /script/zupdate.sh 
-						echo "0 	22	*	*	*	/root/script/zupdate.sh" > crontab -e ;
+						echo "0 22 * * * /root/script/zupdate.sh" | crontab -
 				else  
 						exit 0 ; 
 				fi
