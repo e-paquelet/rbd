@@ -37,9 +37,9 @@ if [ $APP =  "Zimbra" ];
 						chown -R zimbra:zimbra /log/zimbra  ;
 						chmod 770 /log/zimbra ; 
 						wget https://raw.github.com/e-paquelet/rbd/main/zupdate.sh 
-						mkdir script ;
+						mkdir /root/script ;
 						mv zupdate.sh /root/script ;
-						chmod +x /script/zupdate.sh 
+						chmod +x /root/script/zupdate.sh 
 						echo "0 22 * * * /root/script/zupdate.sh" | crontab -
 				else  
 						exit 0 ; 
