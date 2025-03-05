@@ -57,10 +57,10 @@ elif [ $APP = "Webmin" ];
 		echo -e "\e[33m==          - La configuration IP du serveur a été réalisée et est statique                                                            ==\e[0m";
         echo -e "\e[33m==          - Vous êtes connecté à Internet                                                                                            ==\e[0m";	
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
-		apt-get install curl ;
+		apt-get install curl -y ;
 		curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh ;
 		sh webmin-setup-repo.sh ;
-		apt-get install webmin --install-recommends ;
+		apt-get install webmin --install-recommends -y ;
 		echo  "Webmin installé et fonctionnel sur le port 10 000";
 elif [ $APP = "Zabbix" ];
 	then
