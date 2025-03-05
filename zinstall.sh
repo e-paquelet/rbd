@@ -33,7 +33,8 @@ if [ $APP =  "Zimbra" ];
 						su - zimbra -c "zmprov ms $FQDN zimbraMailSSLPort 443 | zmprov ms $FQDN zimbraMailSSLProxyPort 8443"
 						su - zimbra -c "zmcontrol restart"
 						echo "Vous pouvez désormais accéder au webmail sur l'adresse suivante : $FQDN et mail.$DN" ; 
-						mkdir /log/zimbra ;
+						mkdir /log ;
+      						mkdir /log/zimbra ;
 						chown -R zimbra:zimbra /log/zimbra  ;
 						chmod 770 /log/zimbra ; 
 						wget https://raw.github.com/e-paquelet/rbd/main/zupdate.sh 
