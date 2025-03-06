@@ -33,17 +33,22 @@ if [ $APP =  "Zimbra" ];
 						su - zimbra -c "zmprov ms $FQDN zimbraMailSSLPort 443 | zmprov ms $FQDN zimbraMailSSLProxyPort 8443"
 						su - zimbra -c "zmcontrol restart"
 						echo "Vous pouvez désormais accéder au webmail sur l'adresse suivante : $FQDN et mail.$DN" ; 
-						mkdir /log ;
-      						mkdir /log/zimbra ;
-						chown -R zimbra:zimbra /log/zimbra  ;
-						chmod 770 /log/zimbra ; 
-						wget https://raw.github.com/e-paquelet/rbd/main/zupdate.sh 
-						mkdir /root/script ;
-						mv zupdate.sh /root/script ;
-						chmod +x /root/script/zupdate.sh 
-						echo "0 22 * * * /root/script/zupdate.sh" | crontab -
+      						read -p "Voulez vous mettre en place un script permettant l'enregistrement des états du serveur dans un fichier ? [Y/N]" log ;
+	    					if [ $log = "Y" ];
+	  						then
+								mkdir /log ;
+      								mkdir /log/zimbra ;
+								chown -R zimbra:zimbra /log/zimbra  ;
+								chmod 770 /log/zimbra ; 
+								wget https://raw.github.com/e-paquelet/rbd/main/zupdate.sh 
+								mkdir /root/script ;
+								mv zupdate.sh /root/script ;
+								chmod +x /root/script/zupdate.sh 
+								echo "0 22 * * * /root/script/zupdate.sh" | crontab -
+						else
+      							exit 0 ; 
 				else  
-						exit 0 ; 
+						exit 1 ; 
 				fi
 		fi
 
