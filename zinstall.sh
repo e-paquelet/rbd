@@ -47,6 +47,7 @@ if [ $APP =  "Zimbra" ];
 								echo "0 22 * * * /root/script/zupdate.sh" | crontab -
 						else
       							exit 0 ; 
+	     					fi
 				else  
 						exit 1 ; 
 				fi
