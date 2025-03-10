@@ -1,8 +1,8 @@
 #!/bin/bash
 
-read -p "Ce script installera automatiquement un script de synchronisation entre Zimbra et l'Active Directory" APP ;
+read -p "Ce script installera automatiquement un script de synchronisation entre Zimbra et l'Active Directory [Y/N]" APP ;
 
-if [ $APP =  "Zimbra" ]; 
+if [ $APP =  "Y" ]; 
 	then
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
 		echo -e "\e[33m========================================================[   Prerequisite    ]============================================================\e[0m";
@@ -17,30 +17,33 @@ if [ $APP =  "Zimbra" ];
 		echo -e "\e[33m==          pour la synchronisation avec l'Active Directory. Le script n'ira chercher les comptes que dans une UO distinctive.         ==\e[0m";
 		echo -e "\e[33m==          Les sous UO présentent dans cette UO distinctive sont prise en compte par le script par récurrence.                        ==\e[0m";
     echo -e "\e[33m==          Exemple : Voici une arbre représentant l'arborescence de l'Active Directory :                                              ==\e[0m";
-    echo -e "\e[33m== 📁 mondomaine.local"
-    echo -e "\e[33m== │"
-    echo "├── 📁 Builtin"
-    echo "├── 📁 Computers"
-    echo "├── 📁 Domain Controllers"
-    echo "│   ├── 📄 Policies"
-    echo "│   └── 📁 <Nom_du_DC>"
-    echo "├── 📁 ForeignSecurityPrincipals"
-    echo "├── 📁 Managed Service Accounts"
-    echo "├── 📁 Program Data"
-    echo "├── 📁 System"
-    echo "│   ├── 📁 Policies"
-    echo "│   ├── 📁 Scripts"
-    echo "│   └── 📁 DFS-Configuration"
-    echo "├── 📁 Users"
-    echo "│   ├── 👤 Administrateur"
-    echo "│   ├── 👤 Invité"
-    echo "│   ├── 👥 Utilisateurs du domaine"
-    echo "│   ├── 👥 Administrateurs du domaine"
-    echo "│   ├── 👥 Opérateurs de comptes"
-    echo "│   ├── 👥 Opérateurs de sauvegarde"
-    echo "│   ├── 👥 Opérateurs serveur"
-    echo "│   ├── 👥 Opérateurs d'impression"
-    echo "│   └── ..."
-    echo "└── 📁 <Autres Unités Organisationnelles personnalisées si créées>"
-
+    echo -e "\e[33m== 📁 mondomaine.local\e[0m"
+    echo -e "\e[33m== │\e[0m"
+    echo -e "\e[33m== ├── 📁 Builtin\e[0m"
+    echo -e "\e[33m== ├── 📁 Computers\e[0m"
+    echo -e "\e[33m== ├── 📁 Domain Controllers\e[0m"
+    echo -e "\e[33m== │   ├── 📄 Policies\e[0m"
+    echo -e "\e[33m== │   └── 📁 <Nom_du_DC>\e[0m"
+    echo -e "\e[33m== ├── 📁 ForeignSecurityPrincipals\e[0m"
+    echo -e "\e[33m== ├── 📁 Managed Service Accounts\e[0m"
+    echo -e "\e[33m== ├── 📁 Program Data\e[0m"
+    echo -e "\e[33m== ├── 📁 System\e[0m"
+    echo -e "\e[33m== │   ├── 📁 Policies\e[0m"
+    echo -e "\e[33m== │   ├── 📁 Scripts\e[0m"
+    echo -e "\e[33m== │   └── 📁 DFS-Configuration\e[0m"
+    echo -e "\e[33m== ├── 📁 Users\e[0m"
+    echo -e "\e[33m== │   ├── 👤 Administrateur\e[0m"
+    echo -e "\e[33m== │   ├── 👤 Invité\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Utilisateurs du domaine\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Administrateurs du domaine\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Opérateurs de comptes\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Opérateurs de sauvegarde\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Opérateurs serveur\e[0m"
+    echo -e "\e[33m== │   ├── 👥 Opérateurs d'impression\e[0m"
+    echo -e "\e[33m== │   └── ...\e[0m"
+    echo -e "\e[33m== └── 📁 Utilisateurs \e[0m"
+    echo -e "\e[33m== |   ├── 📁 direction\e[0m"
+    echo -e "\e[33m== |   ├── 📁 service_info\e[0m"
+    echo -e "\e[33m== |       ├── 👤 Jean\e[0m"
+    echo -e "\e[33m== |   ├── 👤 Pierre\e[0m"
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
