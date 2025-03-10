@@ -5,8 +5,8 @@ read -p "Ce script installera automatiquement un script de synchronisation entre
 if [ $APP =  "Y" ]; 
 	then
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
-		echo -e "\e[33m========================================================[   Prerequisite    ]============================================================\e[0m";
-		echo -e "\e[33m==                         Ce script va installer un script de synchronisation entre l'Active Directory et Zimra.                      ==\e[0m";
+		echo -e "\e[33m=====================================================[   Notice d'utilisation    ]=======================================================\e[0m";
+		echo -e "\e[33m==                Ce script va installer un script de synchronisation entre l'Active Directory et Zimra pour Ubuntu 22.                ==\e[0m";
 		echo -e "\e[33m==       Afin que le script fonctionne correctement, assurez vous que la version de Zimbra que vous utilisez soit :                    ==\e[0m";
 		echo -e "\e[33m==          - Zimbra FOSS v 10.1.4 (lien de téléchargement : https://maldua.github.io/zimbra-foss-builder/downloads.html               ==\e[0m";
 		echo -e "\e[33m==          - Ce script doit être exécuté IMPERATIVEMENT en tant qu'utilisateur root                                                   ==\e[0m";
@@ -46,6 +46,21 @@ if [ $APP =  "Y" ];
     echo -e "\e[33m== |   ├── 📁 service_info\e[0m"
     echo -e "\e[33m== |       ├── 👤 Jean\e[0m"
     echo -e "\e[33m== |   ├── 👤 Pierre\e[0m"
+    echo -e "\e[33m== Dans l'UO Utilisateurs, tous les utilisateurs, qu'ils soient dans l'UO principale <<Utilisateur>> ou dans une sous UO <<service_info>>          ==\e[0m";
+    echo -e "\e[33m== seront pris en compte par le script. Cependant, les autres utilisateurs "Invités" ... ne seront pas pris en compte.                             ==\e[0m";
+    echo -e "\e[33m== Je vous conseille donc de mettre les comptes administrateurs dans l'UO "Users" et non "Utilisateurs" pour éviter des problèmes 		      ==\e[0m";
+    echo -e "\e[33m== lors de l'exécution du script : mauvais alignements des noms d'utilisateurs à leurs prénoms par exemple.                                        ==\e[0m"; 
+    echo -e "\e[33m== Pour lier les comptes admin dans zimbra à leurs comptes dans l'AD, il suffit de configurer l'authentification avec l'Active Directory 	      ==\e[0m";
+    echo -e "\e[33m==  dans zimbra puis indiquer dans les paramètres utilisateurs des comptes d'administration de zimbra dans l'option <<Authentification Externe>>   ==\e[0m";
+    			leur login de l'Active Directory. Cette option dans l'Active Directory se trouve dans l'onglet <<Compte>> des propriétés des utilisateurs.
+       			En cas de mauvaise compréhension, ne pas hésiter à me contacter <<etienne.paquelet@gmail.com>>
+	  		- Pour que le script soit fonctionnel, il faudra modifier plusieurs variables en fonction de votre environnement : 
+     				- DOMAIN_NAME=<<votredomain.local>>
+	   			- domain_name=<<votredomaine.local>>
+       				- ADServer=<<IP_Serveur_AD>>
+	   			- ADUser=<<utilisateur_lien>> Ce compte sert à faire la liaison entre AD et Zimbra. Il faut que ce soit un compte de AD présent 
+       					dans UO Users, comme pour les comptes admins de Zimbra
+	    			- ADUserpass=<<mot de passe de l'utilisateur>>
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
 
   else 
