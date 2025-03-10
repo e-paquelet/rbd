@@ -48,9 +48,9 @@ if [ "$APP" = "Y" ]; then
 ==     |   ├── 👤 Jean
 ==     └── 👤 Pierre
 ==       
-==  - Dans l'UO "Utilisateurs", tous les utilisateurs seront pris en compte par le script.
-==  - Cependant, les autres utilisateurs "Invités" ne seront pas pris en compte.
-==  - Il est conseillé de mettre les comptes administrateurs dans l'UO "Users" et non "Utilisateurs".
+==  - Dans l'UO <<Utilisateurs>>, tous les utilisateurs seront pris en compte par le script.
+==  - Cependant, les autres utilisateurs <<Invités>> ne seront pas pris en compte.
+==  - Il est conseillé de mettre les comptes administrateurs dans l'UO <<Users>> et non <<Utilisateurs>>.
 == 
 ==  - Configuration requise :
 ==      - DOMAIN_NAME=votredomaine.local
