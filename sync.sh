@@ -4,8 +4,8 @@ read -p "Ce script installera automatiquement un script de synchronisation entre
 
 if [ $APP =  "Y" ]; 
 	then
-		echo -e "\e[33m=========================================================================================================================================\e[0m";
-		echo -e "\e[33m=====================================================[   Notice d'utilisation    ]=======================================================\e[0m";
+		echo -e "\e[33m================================================================================================================\e[0m";
+		echo -e "\e[33m=========================================[   Notice d'utilisation    ]==========================================\e[0m";
 		echo -e "\e[33m==                Ce script va installer un script de synchronisation entre l'Active Directory et Zimra pour Ubuntu 22.";
 		echo -e "\e[33m==       Afin que le script fonctionne correctement, assurez vous que la version de Zimbra que vous utilisez soit :";
 		echo -e "\e[33m==          - Zimbra FOSS v 10.1.4 (lien de téléchargement : https://maldua.github.io/zimbra-foss-builder/downloads.html";
@@ -63,7 +63,7 @@ if [ $APP =  "Y" ];
     echo -e "\e[33m== 		- ADUserpass=<<mot de passe de l utilisateur>>";
     echo -e "\e[33m== - Assurez vous que le répertoire zadsync (où sera stocké le script de synchronisation) appartienne bien à l utilisateur zimbra et	";
     echo -e "\e[33m== qu il possède des droit 755 une fois ce script terminé";
-    echo -e "\e[33m=====================================================================================================================================================\e[0m";
+    echo -e "\e[33m==============================================================================================================================\e[0m";
 
   else 
   	echo "lol" ;
