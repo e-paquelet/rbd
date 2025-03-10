@@ -67,6 +67,10 @@ if [ "$APP" = "Y" ]; then
         echo "Assurez-vous que le répertoire 'zadsync' appartient bien à l'utilisateur Zimbra et qu'il possède les droits 755."
         echo "================================================================================================================"
     ) | fmt -w 100 | less
+
+
+    apt-get update -y;
+    apt-get upgrade -y;
 else 
     echo "Annulation de l'installation."
 fi
