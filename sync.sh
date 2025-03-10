@@ -70,6 +70,7 @@ chmod -R 755 /opt/zimbra/zadsync
 chmod +x /opt/zimbra/zadsync/adsync.sh 
 echo "#*/5 * * * * /opt/zimbra/zadsync/adsync.sh >> /opt/zimbra/zadsync/adsync.log 2>&1" | sudo -u zimbra crontab -
 echo "tâche ajoutée au crontab. Il faudra la décommenter pour qu'elle fonctionne. Modifiez les variables comme indiqué dans la notice pour que le script soit fonctionnel" 
+echo "Une fois le script modifié pour prendre en compte les variables de votre environnement, rendez vous dans le répertoire du script et faites ./adsync.sh 
 else
     echo "Annulation de l'installation."
 fi
