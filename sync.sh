@@ -62,7 +62,14 @@ if [ "$APP" = "Y" ]; then
 ==  - Assurez-vous que le répertoire zadsync appartienne bien à l'utilisateur Zimbra avec les droits 755.
 ================================================================================================================
 EOF
-
+mkdir /opt/zimbra/zadsync
+wget https://raw.github.com/e-paquelet/rbd/main/adsync.sh 
+mv adsync.sh /opt/zimbra/zadsync/ 
+chown -R zimbra:zimbra /opt/zimbra/zadsync
+chmod -R 755 /opt/zimbra/zadsync
+chmod +x /opt/zimbra/zadsync/adsync.sh 
+echo "#*/5 * * * * /opt/zimbra/zadsync/adsync.sh >> /opt/zimbra/zadsync/adsync.log 2>&1" | sudo -u zimbra crontab -
+echo "tâche ajoutée au crontab. Il faudra la décommenter pour qu'elle fonctionne. Modifiez les variables comme indiqué dans la notice pour que le script soit fonctionnel" 
 else
     echo "Annulation de l'installation."
 fi
