@@ -46,10 +46,10 @@ if [ $APP =  "Y" ];
     echo -e "\e[33m== |   ├── 📁 service_info\e[0m"
     echo -e "\e[33m== |       ├── 👤 Jean\e[0m"
     echo -e "\e[33m== |   ├── 👤 Pierre\e[0m"
-    echo -e "\e[33m== Dans l'UO Utilisateurs, tous les utilisateurs, qu'ils soient dans l'UO principale <<Utilisateur>> ou dans une sous UO <<service_info>>         ==\e[0m";
+    echo -e "\e[33m== Dans l'UO Utilisateurs, tous les utilisateurs, qu'ils soient dans l'UO principale <<Utilisateur>> ou dans une sous UO <<service_info>>          ==\e[0m";
     echo -e "\e[33m== seront pris en compte par le script. Cependant, les autres utilisateurs "Invités" ... ne seront pas pris en compte.                               ==\e[0m";
     echo -e "\e[33m== Je vous conseille donc de mettre les comptes administrateurs dans l'UO "Users" et non "Utilisateurs" pour éviter des problèmes 		           ==\e[0m";
-    echo -e "\e[33m== lors de l'exécution du script : mauvais alignements des noms d'utilisateurs à leurs prénoms par exemple.                                       ==\e[0m"; 
+    echo -e "\e[33m== lors de l'exécution du script : mauvais alignements des noms d'utilisateurs à leurs prénoms par exemple.                                        ==\e[0m"; 
     echo -e "\e[33m== Pour lier les comptes admin dans zimbra à leurs comptes dans l'AD, il suffit de configurer l'authentification avec l'Active Directory           ==\e[0m";
     echo -e "\e[33m== dans zimbra puis indiquer dans les paramètres utilisateurs des comptes d'administration de zimbra dans l'option <<Authentification Externe>>    ==\e[0m";
     echo -e "\e[33m== leur login de l'Active Directory. Cette option dans l'Active Directory se trouve dans l'onglet <<Compte>> des propriétés des utilisateurs.      ==\e[0m";
