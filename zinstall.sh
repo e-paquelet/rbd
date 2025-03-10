@@ -47,10 +47,7 @@ if [ $APP =  "zimbra" ];
 								echo "0 22 * * * /root/script/zupdate.sh" | crontab -
 						else
       							exit 0 ; 
-	     					fi
-
-    						
-	   					
+	     					fi	   					
 				else  
 						exit 1 ; 
 				fi
@@ -64,7 +61,7 @@ elif [ $APP = "webmin" ];
 		echo -e "\e[33m==       Afin que l'installation se fasse correctement, veillez à ce que les éléments suivants soient correctement configurés :        ==\e[0m";
 		echo -e "\e[33m==                                                                                                                                     ==\e[0m";
 		echo -e "\e[33m==          - La configuration IP du serveur a été réalisée et est statique                                                            ==\e[0m";
-        echo -e "\e[33m==          - Vous êtes connecté à Internet                                                                                            ==\e[0m";	
+        	echo -e "\e[33m==          - Vous êtes connecté à Internet                                                                                            ==\e[0m";	
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
 		apt-get install curl -y ;
 		curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh ;
