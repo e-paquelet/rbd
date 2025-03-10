@@ -1,8 +1,8 @@
 #!/bin/bash
 
-read -p "Que voulez vous installer : Zimbra FOSS, Zabbix, Webmin ? (Répondre par : Zimbra ou Zabbix" APP ;
+read -p "Que voulez vous installer : Zimbra FOSS, Script dde synchronisation entre AD et ZImbra, Webmin ? (Répondre par : zimbra, script, ou webmin" APP ;
 
-if [ $APP =  "Zimbra" ]; 
+if [ $APP =  "zimbra" ]; 
 	then
 		echo -e "\e[33m=========================================================================================================================================\e[0m";
 		echo -e "\e[33m========================================================[   Prerequisite    ]============================================================\e[0m";
@@ -49,22 +49,14 @@ if [ $APP =  "Zimbra" ];
       							exit 0 ; 
 	     					fi
 
-    						fi
-	   					read -p "Voulez vous télécharger et mettre en palce un script de synchronisation entre Zimbra et l'AD (La configuration de  l'Authentification Externe par Active Directory devra être réalisé avant d'exécuter le script. Cependant, si vous répondez par [Y], le téléchargement du script et la configuration de son environnement s feront automatiquement. Dans le cas contraire, il faudra créer un dossier spécial dans /opt/zimbra, lui attribuer des droits 755, changer le propriétaire de root à zimbra et exécuter le script dans ce dossier précis " SYNC ;
-	 					if [ $SYNC = "Y" ];
-       							then
-	      							wget https://raw.github.com/e-paquelet/rbd/main/sync.sh
-	      							chmod +x sync.sh
-	      							./sync.sh 
-	      					else 
-	    						exit 1;
-	   					fi
+    						
+	   					
 				else  
-						exit 2 ; 
+						exit 1 ; 
 				fi
 		fi
 
-elif [ $APP = "Webmin" ];
+elif [ $APP = "webmin" ];
 	then
 	echo -e "\e[33m=========================================================================================================================================\e[0m";
 		echo -e "\e[33m========================================================[   Prerequisite    ]============================================================\e[0m";
@@ -79,11 +71,18 @@ elif [ $APP = "Webmin" ];
 		sh webmin-setup-repo.sh ;
 		apt-get install webmin --install-recommends -y ;
 		echo  "Webmin installé et fonctionnel sur le port 10 000";
-elif [ $APP = "Zabbix" ];
+elif [ $APP = "script" ];
 	then
-
-	echo "lol";
+		read -p "Voulez vous télécharger et mettre en palce un script de synchronisation entre Zimbra et l'AD (La configuration de  l'Authentification Externe par Active Directory devra être réalisé avant d'exécuter le script. Cependant, si vous répondez par [Y], le téléchargement du script et la configuration de son environnement s feront automatiquement. Dans le cas contraire, il faudra créer un dossier spécial dans /opt/zimbra, lui attribuer des droits 755, changer le propriétaire de root à zimbra et exécuter le script dans ce dossier précis " SYNC ;
+	 	if [ $SYNC = "Y" ];
+       			then
+	      			wget https://raw.github.com/e-paquelet/rbd/main/sync.sh
+	      			chmod +x sync.sh
+	      			./sync.sh 
+	      	else 
+	    			exit 1;
+	   	fi
 	
 else 
-	echo "lol2";
+	echo -e "\e[34m Fin du script, installation du script de synchronisation entre Active Directory et Zimbra annulé\e[0m";
 fi ;
