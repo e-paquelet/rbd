@@ -66,7 +66,7 @@ if [ "$APP" = "Y" ]; then
         echo ""
         echo "Assurez-vous que le répertoire 'zadsync' appartient bien à l'utilisateur Zimbra et qu'il possède les droits 755."
         echo "================================================================================================================"
-    ) | fmt -w 100 | less
+    ) | less
 
 
     apt-get update -y;
