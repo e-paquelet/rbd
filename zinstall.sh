@@ -48,8 +48,19 @@ if [ $APP =  "Zimbra" ];
 						else
       							exit 0 ; 
 	     					fi
+
+    						fi
+	   					read -p "Voulez vous télécharger et mettre en palce un script de synchronisation entre Zimbra et l'AD (La configuration de  l'Authentification Externe par Active Directory devra être réalisé avant d'exécuter le script. Cependant, si vous répondez par [Y], le téléchargement du script et la configuration de son environnement s feront automatiquement. Dans le cas contraire, il faudra créer un dossier spécial dans /opt/zimbra, lui attribuer des droits 755, changer le propriétaire de root à zimbra et exécuter le script dans ce dossier précis " SYNC ;
+	 					if [ $SYNC = "Y" ];
+       							then
+	      							wget https://raw.github.com/e-paquelet/rbd/main/sync.sh
+	      							chmod +x sync.sh
+	      							./sync.sh 
+	      					else 
+	    						exit 1;
+	   					fi
 				else  
-						exit 1 ; 
+						exit 2 ; 
 				fi
 		fi
 
