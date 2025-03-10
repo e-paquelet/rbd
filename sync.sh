@@ -31,7 +31,7 @@ if [ "$APP" = "Y" ]; then
 == ├── 📁 System
 == │   ├── 📁 Policies
 == │   ├── 📁 Scripts
-== |   └── 📁 DFS-Configuration
+== │   └── 📁 DFS-Configuration
 == ├── 📁 Users
 == │   ├── 👤 Administrateur
 == │   ├── 👤 Invité
@@ -45,7 +45,7 @@ if [ "$APP" = "Y" ]; then
 == └── 📁 Utilisateurs
 ==     ├── 📁 direction
 ==     ├── 📁 service_info
-==     |   ├── 👤 Jean
+==     │   ├── 👤 Jean
 ==     └── 👤 Pierre
 ==       
 ==  - Dans l'UO <<Utilisateurs>>, tous les utilisateurs seront pris en compte par le script.
