@@ -1,4 +1,5 @@
 }----------------------------Ce répertoire contient différents script d'automatisation------------------------------------{
+
 Les différents scripts sont les suivants : 
 
 - run.sh : remplace le .bashrc par défaut par le .bashrc de ce repertoire.
