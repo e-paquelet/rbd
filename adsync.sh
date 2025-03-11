@@ -5,8 +5,10 @@ echo -e "\e[32m $(date +%D%T) \e[0m" ;
 
 #Déclaration des variables:
 #Nom de domaine Active Directory
-DOMAIN_NAME="domtest.local" ;
-domain_name="domtest.local" ;
+DOMAIN_NAME="" ;
+domain_name="" ;
+DCprinc="";
+DCsec="";
 
 #Fichiers temporaires ou seront stockés les données de comptes
 Names=/opt/zimbra/zadsync/Names.txt ;
@@ -18,24 +20,24 @@ username=/opt/zimbra/zadsync/Nicks.txt ;
 
 #Paramètres sur serveur AD
 #FQDN Du serveur Active Directory
-ADServer="192.168.229.129" ;
+ADServer="" ;
 #Nom d'un utilisateur
-ADUser="ldap_mail" ;
+ADUser="" ;
 #Mot de passe de cet utilisateur
-ADUserpass="tpRT9025" ;
+ADUserpass="" ;
 
 #On récupère les informations des comptes sur l'active directory
 #Dans ce contexte, les comptes à récupérer de trouvent dans l'OU Utilisateurs"
 
 #Récupération des noms exemple : paquelet
-/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b "OU=Utilisateurs,DC=domtest,DC=local" -D "CN=$ADUser, CN=Users,DC=domtest,DC=local" -w $ADUserpass "(&(sAMAccountName=*)(objectClass=user))" | grep sn | awk '{print $2}' > $Names ; 
+/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b "OU=Utilisateurs,DC=$DCprinc,DC=$DCsec" -D "CN=$ADUser, CN=Users,DC=$DCprinc,DC=$DCsec" -w $ADUserpass "(&(sAMAccountName=*)(objectClass=user))" | grep sn | awk '{print $2}' > $Names ; 
 
 #Récupérations des prénoms exemple : etienne
-/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b  "OU=Utilisateurs, DC=domtest,DC=local" -D  "CN=$ADUser, CN=Users, DC=domtest, DC=local" -w $ADUserpass  "( & ( sAMAccountName=*) (objectClass=user))" | grep givenName | awk ' { print $2 } ' > $Firstnames ;
+/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b  "OU=Utilisateurs, DC=$DCprinc,DC=$DCsec" -D  "CN=$ADUser, CN=Users, DC=$DCprinc, DC=$DCsec" -w $ADUserpass  "( & ( sAMAccountName=*) (objectClass=user))" | grep givenName | awk ' { print $2 } ' > $Firstnames ;
 
 
 #Récupérations des noms dutilisateurs de lAD qu'ils utilise pour se connecter aux PC. Exemple : ep@domtest.local
-/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b "OU=Utilisateurs, DC=domtest,DC=local" -D "CN=$ADUser, CN=Users,  DC=domtest, DC=local" -w $ADUserpass "(&(sAMAccountName=*)(objectClass=user))" | grep sAMAccountName | grep -v "filter:" | cut -d " " -f2  > $username ;
+/opt/zimbra/common/bin/ldapsearch -x -H ldap://$ADServer -b "OU=Utilisateurs, DC=$DCprinc,DC=$DCsec" -D "CN=$ADUser, CN=Users,  DC=$DCprinc, DC=$DCsec" -w $ADUserpass "(&(sAMAccountName=*)(objectClass=user))" | grep sAMAccountName | grep -v "filter:" | cut -d " " -f2  > $username ;
 
 #Transformation des noms d'utilisateurs en adresses Emails pour option authentification externe 
 
