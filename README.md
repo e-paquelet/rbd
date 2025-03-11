@@ -1,9 +1,26 @@
-}----------------------------Ce répertoire contient différents script d'automatisation------------------------------------{
+# 📌 Scripts d'Automatisation
 
-Les différents scripts sont les suivants : 
+Ce répertoire contient divers scripts facilitant l'automatisation de tâches administratives, notamment pour la gestion d'un serveur **Zimbra**.
 
-- run.sh : remplace le .bashrc par défaut par le .bashrc de ce repertoire.
-- zupdate.sh : création d'une tâche planifié concernant un serveur zimbra. Le script récupère l'état du serveur et l'inscrit dans un fichier zimbra_status_$(date +%D).txt  du répertoire /log/zimbra
-- zinstall.sh : Permet l'installation automatique  d'un serveur zimbra version 10.1.4. Permet également l'installation d'un serveur Webmin et de l'installation d'un script de synchronisation entre AD et ZImbra
-- sync.sh : Permet la création de l'environnement nécessaire au fonctionnement du script de synchronisation entre l'AD et Zimbra (Création d'un répertoire dédié, mis en place des droits...)
-- adsync.sh : Script de synchronisation entre l'AD et Zimbra 
+---
+
+## 📂 Contenu du Répertoire
+
+| 📜 **Script**      | 📝 **Description** |
+|-------------------|-----------------|
+| **`run.sh`**       | Remplace le `.bashrc` par défaut par celui de ce répertoire. |
+| **`zupdate.sh`**   | Planifie une tâche cron pour surveiller l’état du serveur Zimbra. Il génère un fichier `zimbra_status_$(date +%D).txt` dans `/log/zimbra/`. |
+| **`zinstall.sh`**  | Automatise l’installation d’un serveur **Zimbra 10.1.4**, **Webmin**, et du script de synchronisation entre **Active Directory (AD)** et **Zimbra**. |
+| **`sync.sh`**      | Prépare l’environnement pour la synchronisation **AD ↔ Zimbra** (création d’un répertoire, attribution des droits…). |
+| **`adsync.sh`**    | Effectue la synchronisation entre **Active Directory** et **Zimbra**. |
+
+---
+
+## 📌 Notes
+- Tous les scripts doivent être exécutés avec les **droits root**.   
+- `zupdate.sh` repose sur une tâche **cron** pour fonctionner en continu.  
+
+---
+
+📌 **Auteur** : [Etienne PAQUELET ]  
+📌 **GitHub** : [https://e-paquelet.fr]  
