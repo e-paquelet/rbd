@@ -96,10 +96,10 @@ while IFS= read -r email; do
     # Extraire prénom.nom avant le @
     username=$(echo "$email" | cut -d '@' -f1)
 
-    # Convertir en format attendu : prendre la première lettre du prénom + nom
+    # Convertir en format attendu : prendre les deux premières lettre du prénom + nom
     firstname=$(echo "$username" | cut -d '.' -f1)
     lastname=$(echo "$username" | cut -d '.' -f2)
-    sn_candidate="${lastname}_${firstname:0:2}@domtest.local"  # Ex: ploufc@domtest.local
+    sn_candidate="${lastname}_${firstname:0:2}@domtest.local"  # Ex: paquelet_et@exemple.com
 
     # Vérifier si ce sn existe dans zimbraauth.txt
     if grep -q "^$sn_candidate$" /opt/zimbra/zadsync/zimbraauth.txt; then
