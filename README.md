@@ -13,6 +13,7 @@ Ce répertoire contient divers scripts facilitant l'automatisation de tâches ad
 | **`zinstall.sh`**  | Automatise l’installation d’un serveur **Zimbra 10.1.4**, **Webmin**, et du script de synchronisation entre **Active Directory (AD)** et **Zimbra**. |
 | **`sync.sh`**      | Prépare l’environnement pour la synchronisation **AD ↔ Zimbra** (création d’un répertoire, attribution des droits…). |
 | **`adsync.sh`**    | Effectue la synchronisation entre **Active Directory** et **Zimbra**. |
+| **lxc_init.sh**    | Script appelé par un script extérieur afin de configurer la locale et l'utilisateur "user" (Création et ajout au groupe sudo" | 
 
 ---
 
@@ -23,4 +24,4 @@ Ce répertoire contient divers scripts facilitant l'automatisation de tâches ad
 ---
 
 📌 **Auteur** : [Etienne PAQUELET ]  
-📌 **GitHub** : [https://e-paquelet.fr]  
+📌 **Site Internet : ** : [https://e-paquelet.fr]  
