@@ -12,9 +12,12 @@ error() {
 }
 
 display "Configuration des locales"
+sleep 5
 sed -i 's/# fr_FR.UTF-8/fr_FR.UTF-8/' /etc/locale.gen || error "Failed to configure locale 1" 1
 echo 'LANG=fr_FR.UTF-8' > /etc/default/locale || error "Failed to configure locale 2" 2
+sleep 5
 display "Génération de la locale"
 locale-gen || error "Failed to generate locale" 3 
-
+sleep 5
+display "creation de l'utilisateur user"
 useradd -G sudo -m -s /bin/bash user || error "Failed to create user" 4
