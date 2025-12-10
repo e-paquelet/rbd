@@ -20,4 +20,5 @@ display "Génération de la locale"
 locale-gen || error "Failed to generate locale" 3 
 sleep 5
 display "creation de l'utilisateur user"
-useradd -G sudo -m -s /bin/bash user || error "Failed to create user" 4
+password=$(openssl passwd -6 "tpRT9025")
+useradd -G sudo -p $password -m -s /bin/bash user || error "Failed to create user" 4
