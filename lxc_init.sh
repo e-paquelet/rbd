@@ -6,11 +6,6 @@ display() {
 	printf -- "%s\n" "$1" 
 }
 
-display_lxc() {
-	sudo lxc-ls -f
-
-}
-
 error() {
         printf "Error : %s\n" "$1" >&2
         exit "$2"
