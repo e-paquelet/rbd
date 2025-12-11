@@ -22,4 +22,4 @@ sleep 5
 display "creation de l'utilisateur user"
 password=$(openssl passwd -6 "tpRT9025")
 useradd -G sudo -p "$password" -m -s /bin/bash user || error "Failed to create user" 4
-chmod -r 755 /home/user
+chmod 755 /home/user
